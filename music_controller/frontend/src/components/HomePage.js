@@ -18,6 +18,10 @@ export default function HomePage() {
       });
   }, []);
 
+  const clearRoomCode = () => {
+    setRoomCode(null)
+  }
+
     return (
         <Router>
           <Routes>
@@ -31,7 +35,7 @@ export default function HomePage() {
         />
             <Route path="/join" element={<RoomJoinPage />} />
             <Route path="/create" element={<CreateRoomPage />} />
-            <Route path= "/room/:roomCode" element ={<Room />} exact />
+            <Route path= "/room/:roomCode" element ={<Room leaveRoomCallback={clearRoomCode}/>} exact />
           </Routes>
         </Router>
       );
