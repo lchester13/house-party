@@ -67,7 +67,7 @@ export default function Room(props) {
             votesToSkip={roomDetails.votesToSkip} 
             guestCanPause= {roomDetails.guestCanPause} 
             roomCode={roomCode}
-            updateCallback={() => {}}
+            updateCallback={getRoomDetails}
              />
         </Grid>
 

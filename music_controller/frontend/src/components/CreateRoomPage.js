@@ -11,6 +11,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useNavigate } from 'react-router-dom';
 import { Collapse } from "@material-ui/core"
+import Alert from "@material-ui/lab/Alert"
 
 export default function CreateRoomPage(props) {
   var defaultProps = {
@@ -71,10 +72,10 @@ export default function CreateRoomPage(props) {
         } else {
           useState({
             errorMsg: "Error updating room..."
-          })
+          });
         }
-      }
-      )
+        props.updateCallback();
+      });
       };
 
 
@@ -126,7 +127,8 @@ export default function CreateRoomPage(props) {
           <FormHelperText align="center">
             Guest Control of Playback State
           </FormHelperText>
-          <RadioGroup row defaultValue="true" onChange={handleGuestCanPauseChange}>
+          <RadioGroup row defaultValue = {props.guest_can_pause.toSring()}  
+          onChange={handleGuestCanPauseChange}>
             <FormControlLabel
               value="true"
               control={<Radio color="primary" />}
