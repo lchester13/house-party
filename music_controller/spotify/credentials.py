@@ -1,4 +1,4 @@
 
 CLIENT_ID = "c48c32e7355c4f48a15a6b917b5f1958"
 CLIENT_SECRET = "863e24797c9142628dbff30adabc7742"
-REDIRECT_URI = "https://locallhost.com/"
+REDIRECT_URI = "http://127.0.0.1:8000/spotify/redirect"

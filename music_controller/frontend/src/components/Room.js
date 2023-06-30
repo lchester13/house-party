@@ -12,6 +12,7 @@ export default function Room(props) {
        guestCanPause: false,
        isHost: false, 
        showSettings: false,
+       SpotifyAuthenticated: false,
 
 
    });
@@ -27,7 +28,7 @@ export default function Room(props) {
 
 
    const getRoomDetails = () => {
-       fetch('/api/get-room' + '?code=' + roomCode)
+    fetch('/api/get-room' + '?code=' + roomCode)
        .then((response) => {
 
         if (!response.ok) {
@@ -41,8 +42,30 @@ export default function Room(props) {
                guestCanPause: data.guest_can_pause,
                isHost: data.is_host,
            });
+           if (props.isHost) {
+            authenticateSpotify();
+        }
+
        });
    };
+
+   const authenticateSpotify = () => {
+    fetch('/spotify/is-authenticated').then((response) => response.json()).then((data) => {
+        setRoomDetails({
+            SpotifyAuthenticated: data.status });
+            if (!data.stauts) {
+                fetch('/spotify/get-auth-urls')
+                .then((response) => response.json())
+                .then((data) => {
+                    window.location.replace(data.url)
+
+                });
+            }
+    });
+
+   }
+
+
    const leaveButtonPressed = () => {
     const requestOptions = {
         method: "POST",

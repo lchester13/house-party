@@ -26,7 +26,7 @@ export default function CreateRoomPage(props) {
     const [guestCanPause, setGuestCanPause] = useState(defaultProps.guestCanPause);
     const [votesToSkip, setVotesToSkip] = useState(defaultProps.votesToSkip);
     const [errorMsg, setErrorMsg] = useState("");
-    const [successMsg, sucessMsg] = useState("");
+    const [successMsg, setSuccessMsg] = useState("");
     const navigate = useNavigate();
 
     const handleVotesChange = (e) => {
@@ -127,7 +127,7 @@ export default function CreateRoomPage(props) {
           <FormHelperText align="center">
             Guest Control of Playback State
           </FormHelperText>
-          <RadioGroup row defaultValue = {props.guest_can_pause.toSring()}  
+          <RadioGroup row defaultValue = {props.guestCanPause.toSring()}  
           onChange={handleGuestCanPauseChange}>
             <FormControlLabel
               value="true"
